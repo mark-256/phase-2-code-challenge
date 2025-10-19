@@ -1,11 +1,11 @@
-# 🤖 Bot Battlr
+#  Bot Battlr
 
 Welcome to **Bot Battlr**, the one and only spot in the known universe where you can build and manage your own **Bot Army!**  
 This React web app allows you to browse a list of available bots, enlist them into your army, release them, or discharge them permanently.
 
 ---
 
-## 🚀 Project Overview
+## Project Overview
 
 Bot Battlr is a **React-based single-page application** that demonstrates:
 - Component-based architecture  
@@ -18,7 +18,7 @@ This project was created as part of the **SA-02 Phase 2 Code Challenge**.
 
 ---
 
-## 🧠 Learning Goals
+## Learning Goals
 
 By completing this project, I practiced:
 - Using React components and props effectively  
@@ -30,9 +30,9 @@ By completing this project, I practiced:
 
 ---
 
-## 🛠️ Setup Instructions
+##  Setup Instructions
 
-### 1️⃣ Clone the Repository
+### Clone the Repository
 ```bash
-git clone https://github.com/<your-username>/bot-battlr.git
+git clone https://github.com/mark-256/bot-battlr.git
 cd bot-battlr
