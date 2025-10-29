@@ -1,12 +1,23 @@
 import React from "react";
-import BotCard from "./BotCard.jsx";// Import BotCard component
-
+import BotCard from "./BotCard.jsx"; // Import BotCard component
 
 // Component that displays the user's selected bot army
-function YourBotArmy({ army, releaseBot, dischargeBot }) {
+function YourBotArmy({ army, releaseBot, dischargeBot, dischargeAllBots }) {
   return (
     <div className="your-bot-army">
       <h2>Your Bot Army</h2>
+      {army.length > 0 && (
+        <button
+          onClick={dischargeAllBots}
+          style={{
+            backgroundColor: "red",
+            color: "white",
+            marginBottom: "10px",
+          }}
+        >
+          Delete All Bots
+        </button>
+      )}
       <div className="bot-list">
         {/* Render each bot in the army */}
         {army.map((bot) => (
@@ -23,4 +34,4 @@ function YourBotArmy({ army, releaseBot, dischargeBot }) {
   );
 }
 
-export default YourBotArmy;// Export component
+export default YourBotArmy; // Export component

@@ -5,7 +5,6 @@ import YourBotArmy from "./components/YourBotArmy.jsx";
 import Header from "./components/Header.jsx";
 
 function App() {
-  // State for all bots
   const [bots, setBots] = useState([]);
   // State for bots added to your army
   const [army, setArmy] = useState([]);
@@ -29,11 +28,27 @@ function App() {
     setArmy(army.filter((b) => b.id !== bot.id));
   }
 
-  // Permanently delete a bot from the server and remove it from army
+  // Permanently delete a bot from the server and remove it from army and collection
   function dischargeBot(bot) {
     fetch(`http://localhost:3000/bots/${bot.id}`, { method: "DELETE" }).then(
-      () => setArmy(army.filter((b) => b.id !== bot.id))
+      () => {
+        setArmy(army.filter((b) => b.id !== bot.id));
+        setBots(bots.filter((b) => b.id !== bot.id));
+      }
     );
+  }
+
+  // Permanently delete all bots in the army from the server and clear the army and remove from collection
+  function dischargeAllBots() {
+    const deletePromises = army.map((bot) =>
+      fetch(`http://localhost:3000/bots/${bot.id}`, { method: "DELETE" })
+    );
+    Promise.all(deletePromises).then(() => {
+      setArmy([]);
+      setBots(
+        bots.filter((bot) => !army.some((armyBot) => armyBot.id === bot.id))
+      );
+    });
   }
 
   return (
@@ -44,6 +59,7 @@ function App() {
         army={army}
         releaseBot={releaseBot}
         dischargeBot={dischargeBot}
+        dischargeAllBots={dischargeAllBots}
       />
       {/* Display all available bots to enlist */}
       <BotCollection bots={bots} enlistBot={enlistBot} />
